@@ -17,7 +17,7 @@
 -behaviour(gen_server).
 
 %% API
--export([start/2,start/3,stop/0,stop/1,next/0,next/1]).
+-export([start/1,start/3,stop/0,stop/1,next/0,next/1]).
 
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
@@ -42,9 +42,10 @@
 %%
 %% @end
 %%--------------------------------------------------------------------
--spec start(list(), atom()) -> {ok, pid()} | ignore | {error, term()}.
-start(Identifiers,Node_name) ->
-    gen_server:start_link({global, Node_name}, ?MODULE, {Identifiers,[]}, []).
+-spec start(list()) -> {ok, pid()} | ignore | {error, term()}.
+start(Identifiers) ->
+    io:format("Starting rrobin_serv with identifiers ~p~n",[Identifiers]),
+    gen_server:start_link({global, ?MODULE}, ?MODULE, {Identifiers,[]}, []).
 %%--------------------------------------------------------------------
 %% @doc
 %% Starts a server using this module and registers the server using

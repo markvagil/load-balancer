@@ -46,7 +46,7 @@ init([]) ->
                  period => 10},
     ChildSpecs = [#{
                     id => rrobin_serv,
-                    start => {rrobin_serv, start, [['backend@142.93.16.138', 'backend@138.68.15.146'],'rrobin_serv@165.232.48.38']},
+                    start => {rrobin_serv, start, [['backend@142.93.16.138', 'backend@138.68.15.146']]},
                     restart => permanent,
                     shutdown => 2000,
                     type => worker,
