@@ -103,7 +103,7 @@ stop(Registered_name) -> gen_server:call(Registered_name, stop).
 %%--------------------------------------------------------------------
 
 -spec next() -> term().
-next()-> gen_server:call(?MODULE, next).
+next()-> gen_server:call({global,?MODULE}, next).
 
 %%--------------------------------------------------------------------
 %% @doc
